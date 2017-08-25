@@ -1,0 +1,28 @@
+<ion-view view-title="">
+    <ion-content class="bodyBackground" >
+    <div style="text-align: center;">
+        <img src="img/loader.svg" data-ng-show="loading" data-ng-show="loading=true">
+    </div>
+    
+        <div class="list card" data-ng-repeat="beer in beerList">
+            <div class="item-avatar item">
+                <img data-ng-show="beer.isOrganic" data-ng-src="{{getOrganic(beer)}}">
+                <div>
+                    <h2>{{beer.nameDisplay}}</h2>
+                    <p>{{beer.style.name}}</p>
+                </div>
+            </div>
+            <div class="item item-body">
+                <p data-ng-show="beer.available.description"><strong>Availability</strong></p>
+                <p data-ng-show="beer.available.description"> {{beer.available.description}}</p>
+                <p data-ng-show="beer.description"><strong>Description</strong></p>
+                <p data-ng-show="beer.description">
+                    {{beer.description}}
+                </p>
+                <p>
+                    <a href="#" class="subdued"><strong>Alcohol</strong> {{beer.abv}}%</a>
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

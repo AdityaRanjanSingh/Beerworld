@@ -1,0 +1,23 @@
+<ion-view view-title="Ingridients of Beer">
+
+    <ion-content class="bodyBackground">  
+    <div style="text-align: center;">
+        <img src="img/loader.svg" data-ng-show="loading" data-ng-show="loading=true">
+    </div>      
+        <div class="button-bar bar-positive ">
+            <a class="button" data-ng-init="ingredients=ingridientsData.malt" data-ng-click="displayCategoryData(category)" data-ng-repeat="category in ingridientsCategories">{{category}}</a>
+        </div>    
+
+        <div class="list card" data-ng-show="ingredients" data-ng-repeat="item in ingredients">
+            <div class="item">
+                <h2>{{item.name}}</h2>
+                <p>{{item.categoryDisplay}}</p>
+            </div>
+            <div class="item item-body" data-ng-show="item.description">
+                <p>
+                    {{item.description}}
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

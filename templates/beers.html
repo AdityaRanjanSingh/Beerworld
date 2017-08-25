@@ -1,0 +1,84 @@
+<ion-view view-title="{{menuPageTitle}}">
+    <ion-content class="bodyBackground">
+    <div style="text-align: center;">
+        <img src="img/loader.svg" data-ng-show="loading" data-ng-show="loading=true">
+    </div>
+    
+
+        <div class="card" data-ng-show="categories" data-ng-repeat="item in categoriesList">
+            <a class="item item-icon-left">
+                <i class="icon ion-ios-pint"></i> {{item.name}}
+            </a>
+        </div>
+
+
+        <div class="list card" data-ng-show="styles" data-ng-click="getBeersByStyle(item)" data-ng-repeat="item in stylesList">
+            <div class="item item-avatar">
+                <img src="img/beer.jpg">
+                <h2>{{item.name}}</h2>
+                <p>{{item.shortName}}</p>
+            </div>
+            <div class="item item-body">
+                <p>
+                    {{item.description}}
+                </p>
+                <a href="#/app/beershome/{{item.id}}">more</a>
+                <p>
+                    <a href="#" class="subdued">Abv Max: {{item.abvMax}}</a>
+                    <a href="#" class="subdued">Abv min: {{item.abvMin}}</a>
+                    <a href="#" class="subdued">ibu min: {{item.ibuMin}}</a>
+                    <a href="#" class="subdued">ibu max: {{item.ibuMax}}</a>
+                </p>
+            </div>
+        </div>
+
+
+        <div class="card" data-ng-show="glassware" data-ng-repeat="item in glasswareList">
+            <a class="item  item-icon-right" href="#/app/beerGlassware/{{item.id}}">
+              {{item.name}}
+      <img class="icon glasswareImage" data-ng-src="{{getImageForGlassware(item)}}">
+    </a>
+        </div>
+
+
+        <div class="list" data-ng-show="srm">
+            <a class="item item-icon-right" data-ng-style="{{getStyleForSrm(item)}}" href="#/app/beerColor/{{item.id}}" data-ng-repeat="item in colorsList  ">
+                <i class="icon arrowIconRight ion-ios-arrow-forward"></i>
+            </a>
+        </div>
+                
+        <ul class="list" data-ng-show="countries">
+            <li class="item" data-ng-repeat="item in countriesList">
+                <h2>{{item.name}}</h2>
+            </li>
+        </ul>
+        
+
+        <div class="card" data-ng-show="beeravailability" data-ng-click="getBeerByAvailability(item)" data-ng-repeat="item in beeravailabilityList">
+            <a class="item  item-icon-right" href="#">    
+      {{item.description}}
+      
+    </a>
+        </div>
+    
+    
+        <div class="list card" data-ng-show="searchList" data-ng-repeat="search in searchList">
+            <div class=" item">
+                <div>
+                    <h2>{{search.name}}</h2>
+                    <p>{{search.type}}</p>
+                </div>
+            </div>
+            <div class="item item-body">
+                <img style="max-height: 100%;max-width: 100%" data-ng-show="search.images.large" data-ng-src="{{search.images.large}}">
+                <p data-ng-show="search.description"><strong>Description</strong></p>
+                <p data-ng-show="search.description">
+                    {{search.description}}
+                </p>
+                <p>
+                    <strong>Website:</strong><a href="{{search.website}}">{{search.website}}</a>
+                </p>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
